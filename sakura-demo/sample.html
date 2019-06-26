@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>sakuraio sample demo</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    
+    <h1 id="message"></h1>
+    
+    <script>
+      const h1 = document.getElementById('message');
+      const url = 'wss://api.sakura.io/ws/v1/***********************';
+      
+      const client = new WebSocket(url);
+      
+      //接続を開始した時の処理
+      client.onopen = function() {
+        h1.innerHTML = '接続開始...';
+      }
+    
+      //接続エラーがあった時の処理
+      client.onerror = function(error) {
+        alert(error);
+      }
+      
+      //データを取得した時の処理
+      client.onmessage = function(e) {
+        const data = JSON.parse(e.data);
+      
+        if(data.type === 'channels') {
+      
+          const value = data.payload.channels[0].value
+      
+          h1.innerHTML = '値は、' + value + 'です！';
+      
+        }
+        
+      }
+    </script>
+  </body>
+</html>
