@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>StackML Sample</title>
+  <style>
+    canvas {
+      width: 500px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>StackMLのテスト</h1>
+  
+  <!-- 任意の画像を配置してください -->
+  <img src="sample.jpg" crossorigin="anonymous" id="myimage" width="500">
+  
+  <canvas id="myCanvas"></canvas>
+  
+  
+  <script src="https://stackml.com/library-js/stackml.min.js"></script>
+  <script>
+    const image = document.getElementById('myimage');
+    const canvas = document.getElementById('myCanvas');
+    
+    callStackML();
+
+    async function callStackML() {
+      await stackml.init({'accessKeyId': '【アクセスキー】'});      
+      
+      //人物と背景の切り分け
+      /*
+      const model = await stackml.bodypix();
+      
+      model.detect(image, (err, results) => {
+        model.draw(canvas, image, results);
+      });
+      */
+      
+      
+      //表情解析
+      /*
+      const model = await stackml.faceExpression();
+      
+      model.detect(image, (err, results) => {
+        model.draw(canvas, image, results);
+      });
+      */
+      
+      
+      //顔検出
+      /*
+      const model = await stackml.faceDetection();
+      
+      model.detect(image, (err, results) => {
+        model.draw(canvas, image, results);
+      });
+      */
+      
+      
+      //骨格・姿勢分析
+      /*
+      const model = await stackml.poseNet();
+      
+      model.detect(image, (err, results) => {
+        model.draw(canvas, image, results);
+      });      
+      */
+      
+      
+      //顔の特徴検出
+      /*
+      const model = await stackml.faceLandmark();
+      
+      model.detect(image, (err, results) => {
+        model.draw(document.getElementById('myCanvas'), image, results);
+      });
+      */
+      
+      
+      //画像認識
+      /*
+        const model = await stackml.imageClassifier('MobileNet');
+
+        model.predict(image, (err, results) => {
+          console.log(results);
+        });
+        */
+      
+    }
+  </script>
+  </body>
+</html>
