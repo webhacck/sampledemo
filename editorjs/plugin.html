@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>EditorJS Sample</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  </head>
+  <body>
+    
+    <div id="editor"></div>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
+
+    <script>
+      //プラグインを提供するクラス
+      //（外部ファイルとして作成しても可）
+      class EasyImage {
+        
+        //メニューバーにアイコンを追加
+        static get toolbox() {
+          return {
+            title: 'Image',
+            icon: '<i class="fas fa-images"></i>'
+          };
+        }
+
+        //プラグインのUI処理
+        render(){
+          const div = document.createElement('div');
+          const input = document.createElement('input');
+
+          //画像URLが貼り付けられた時の処理
+          input.addEventListener('paste', (event) => {
+            const img = document.createElement('img');
+
+            //貼り付けられたURLを取得
+            img.src = event.clipboardData.getData('text');
+            img.width = 400;
+
+            //ブロックをリセット
+            div.innerHTML = '';
+            div.appendChild(img);
+
+          });
+
+          div.appendChild(input);
+
+          return div;
+        }
+
+        //保存時のデータ抽出
+        save(data){
+          return {
+            url: data.querySelector('img').src
+          }
+        }
+      }
+    </script>
+    <script>
+      const editor = new EditorJS({
+        holder: 'editor',
+
+        tools: {
+          image: EasyImage
+        }
+      });
+    </script>
+  </body>
+</html>
