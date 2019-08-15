@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>EditorJS Sample</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+   
+    //テキストエディタを表示する
+    <div id="editor"></div>
+
+    
+    
+    //必要なプラグインを読み込む
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>    //ヘッダー要素
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/list@latest"></script>      //リスト要素
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/checklist@latest"></script> //チェックリスト要素
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/quote@latest"></script>     //引用要素
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/code@latest"></script>      //コード要素
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/table@latest"></script>     //テーブル要素
+
+    //Editor.jsの本体ライブラリを読み込む
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
+    <script>
+
+      //インスタンスの作成
+      const editor = new EditorJS({
+        holder: 'editor',
+
+        //プラグインの設定
+        tools: {
+          header: Header,        
+          list: List,        
+          checklist: Checklist,
+          quote: Quote,
+          code: CodeTool,
+          table: Table
+        }
+      });
+
+    </script>
+  </body>
+</html>
