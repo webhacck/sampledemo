@@ -1,0 +1,63 @@
+/* styles */
+/* called by your view template */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+  margin: 2em;
+  text-align: center;
+}
+
+h1 {
+  font-style: italic;
+  color: #77c;
+  text-shadow: 1px 1px 2px #666;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+
+form {
+  margin-bottom: 25px;
+  padding: 15px 40px;
+/*   background-color: #fbb; */
+  display: inline-block;
+  width: 100%;
+  max-width: 380px;
+}
+
+input {
+  display: block;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+#btn {
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 3px;
+  background-color: #66f;
+  border: 1px solid grey;
+  color: #fff;
+  cursor: pointer;
+}
+
+#btn:hover {
+  background-color: #44f;
+}
+
+
+footer {
+  margin-top: 50px;
+  padding-top: 25px;
+  border-top: 1px solid lightgrey;
+}
