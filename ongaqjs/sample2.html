@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>Ongaq JS発音サンプル</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.min.css" />
+  </head>
+  <body class="container">
+    
+    <h1>Ongaq JS発音サンプル</h1>
+    
+    <button id="button" class="button-outline">実行</button>
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/gh/codeninth/ongaq-js/build/ongaq.js"></script>
+    
+    <script>
+      
+      //APIキーを設定してください
+      const ongaq = new Ongaq ({
+        api_key: '*****************',
+        volume: 90,
+        bpm: 110,
+        
+        onReady: () => {
+          const button = document.getElementById("button");
+          
+          button.onclick = () => {
+            if (ongaq.params.isPlaying) {
+              ongaq.pause()
+            } else {
+              ongaq.start()
+            }
+          }
+        }
+        
+      })
+
+
+      const piano = new Part({
+        sound: 'my_piano',
+        measure: 1,
+        mute: false
+      });
+      
+      piano.add( new Filter({
+        type: 'note',
+        key: ['C3', 'E3', 'G3'],
+        length: 16,
+        active: beat => beat === 0
+      }));
+
+      ongaq.add(piano);
+
+      
+      /*
+      //ドラムのサンプル例
+      const drum = new Part({
+        sound: 'my_band_drums',
+        measure: 1,
+        mute: false
+      })
+
+      drum.add(new Filter({
+        type: 'note',
+        key: beat => {
+          switch(beat) {
+            case 0: return ['kick']
+            case 4: return ['snare']
+            case 8: return ['kick']
+            case 12: return ['snare']
+          }
+        },
+        active: beat => beat % 4 === 0
+      }))
+            
+      ongaq.add(drum);
+      */
+
+    </script>
+  </body>
+</html>
