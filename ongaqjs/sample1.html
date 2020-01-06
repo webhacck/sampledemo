@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>Ongaq JS Sample</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.min.css" />
+  </head>
+  <body class="container">
+    
+    <h1>Ongaq JS Sample</h1>
+ 
+    <button id="button" class="button-outline">実行</button>
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/gh/codeninth/ongaq-js/build/ongaq.js"></script>
+    <script>
+      
+      //APIキーを設定してください
+      const ongaq = new Ongaq ({
+        api_key: '**************',
+        volume: 90,
+        bpm: 110,
+        
+        onReady: () => {
+          const button = document.getElementById("button");
+          
+          button.onclick = () => {
+            if (ongaq.params.isPlaying) {
+              ongaq.pause()
+            } else {
+              ongaq.start()
+            }
+          }
+        }
+        
+      })
+
+      
+    </script>
+  </body>
+</html>
